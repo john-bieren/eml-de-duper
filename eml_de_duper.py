@@ -2,9 +2,11 @@
 
 '''Remove duplicate .eml files from a given directory'''
 
-from os import path, listdir, remove
 from datetime import datetime
+from os import listdir, path, remove
+
 from tqdm import tqdm
+
 
 def remove_duplicates(directory):
     '''Remove duplicate .eml files from directory'''
