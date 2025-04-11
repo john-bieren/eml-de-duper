@@ -14,6 +14,8 @@ def remove_duplicates(directory):
     files = duplicates = 0
     directory_path = path.realpath(directory)
     for eml_name in tqdm(listdir(directory_path)):
+        if eml_name[-4:] != ".eml":
+            continue
         files += 1
         potential_duplicate_part = eml_name.split(".", maxsplit=1)[0]
         if potential_duplicate_part in file_names:
