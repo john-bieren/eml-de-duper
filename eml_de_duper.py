@@ -26,18 +26,19 @@ def remove_duplicates(directory):
     return files, duplicates
 
 def log_usage(start_time, files, duplicates):
-    '''Log start time, files reviewed, and duplicates removed'''
+    '''Log start time, run time, files reviewed, and duplicates removed'''
     file_name = "usage_log.csv"
+    run_time = datetime.now() - start_time
     if path.isfile(file_name):
         with open(file_name, "a", encoding='UTF-8') as file:
-            file.write(f"{start_time},{files},{duplicates}\n")
+            file.write(f"{start_time},{run_time},{files},{duplicates}\n")
     else:
         with open(file_name, "x", encoding='UTF-8') as file:
-            file.write("start time,files,duplicates\n")
-            file.write(f"{start_time},{files},{duplicates}\n")
+            file.write("start time,run time,files scanned,duplicates\n")
+            file.write(f"{start_time},{run_time},{files},{duplicates}\n")
 
 def main():
-    '''Remove duplicates, log results'''
+    '''Remove duplicates, log usage info'''
     directory = input("Enter the full path to the folder which contains the EMLs: ").strip('"')
     start_time = datetime.now()
     files, duplicates = remove_duplicates(directory)
