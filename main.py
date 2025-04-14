@@ -7,6 +7,9 @@ from os import listdir, path, remove
 
 from tqdm import tqdm
 
+from exception_logger import configure_logger
+
+configure_logger()
 
 def remove_duplicates(directory):
     '''Remove duplicate .eml files from directory'''
