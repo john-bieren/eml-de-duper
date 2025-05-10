@@ -32,11 +32,11 @@ def log_usage(start_time, run_time, emls_scanned, duplicates, directory_path):
     file_name = "usage_log.csv"
     if path.isfile(file_name):
         with open(file_name, "a", encoding='UTF-8') as file:
-            file.write(f"{start_time},{run_time},{emls_scanned},{duplicates},{directory_path}\n")
+            file.write(f'{start_time},{run_time},{emls_scanned},{duplicates},"{directory_path}"\n')
     else:
         with open(file_name, "x", encoding='UTF-8') as file:
             file.write("start time,run time,emls scanned,duplicates,directory\n")
-            file.write(f"{start_time},{run_time},{emls_scanned},{duplicates},{directory_path}\n")
+            file.write(f'{start_time},{run_time},{emls_scanned},{duplicates},"{directory_path}"\n')
 
 def main():
     '''Remove duplicates, log usage info'''
