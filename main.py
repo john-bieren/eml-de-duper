@@ -19,7 +19,16 @@ def remove_duplicates(directory_path):
         if file_name[-4:] != ".eml":
             continue
         emls_scanned += 1
-        potential_duplicate_part = file_name.split(".", maxsplit=1)[0]
+
+        # there are two possible formats
+        if "." in file_name.replace(".eml", ""):
+            # 1900-01-01T23_59_59.000Z_123
+            split_char = "."
+        else:
+            # 19000101235959_123
+            split_char = "_"
+        potential_duplicate_part = file_name.split(split_char, maxsplit=1)[0]
+
         if potential_duplicate_part in file_names:
             remove(path.join(directory_path, file_name))
             duplicates += 1
