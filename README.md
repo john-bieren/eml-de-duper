@@ -12,4 +12,4 @@ For ease of use, desktop shortcuts to `eml_de_duper.ps1` and `update.ps1` can be
 
 ## Usage
 
-Run `main.py` or `eml_de_duper.ps1` and input the full path to the folder which includes the .eml files from which you want to remove duplicates.
+Run `main.py` or `eml_de_duper.ps1`, input the full path to the folder which includes the .eml files from which you want to remove duplicates, and indicate whether you want duplicates to be deleted or moved to a "duplicates" subfolder.
