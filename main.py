@@ -12,6 +12,26 @@ from exception_logger import configure_logger
 
 configure_logger()
 
+def main():
+    '''Remove duplicates, log usage info'''
+    directory = input("Enter the full path to the folder which contains the EMLs: ").strip('"')
+    directory_path = path.realpath(directory)
+
+    while True:
+        y_n = input('Move duplicates to a "duplicates" subfolder instead of deleting them? (y/n) ')
+        if y_n.strip().lower() in ('y', 'n'):
+            break
+        print(f'"{y_n}" is an invalid input, please respond with either "y" or "n"')
+    keep_files = y_n.strip().lower() == 'y'
+
+    start_time = datetime.now()
+    emls_scanned, duplicates = remove_duplicates(directory_path, keep_files)
+    run_time = datetime.now() - start_time
+
+    word = "Moved" if keep_files else "Removed"
+    print(f"{word} {duplicates} duplicate .eml file{"s" if duplicates != 1 else ""}")
+    log_usage(start_time, run_time, emls_scanned, duplicates, y_n, directory_path)
+
 def remove_duplicates(directory_path, keep_files):
     '''Remove duplicate .eml files from directory'''
     if keep_files:
@@ -55,26 +75,6 @@ def log_usage(start_time, run_time, emls, duplicates, dups_moved, dir_path):
         with open(file_name, "x", encoding='UTF-8') as file:
             file.write("start time,run time,emls scanned,duplicates,duplicates moved,directory\n")
             file.write(f'{start_time},{run_time},{emls},{duplicates},{dups_moved},"{dir_path}"\n')
-
-def main():
-    '''Remove duplicates, log usage info'''
-    directory = input("Enter the full path to the folder which contains the EMLs: ").strip('"')
-    directory_path = path.realpath(directory)
-
-    while True:
-        y_n = input('Move duplicates to a "duplicates" subfolder instead of deleting them? (y/n) ')
-        if y_n.strip().lower() in ('y', 'n'):
-            break
-        print(f'"{y_n}" is an invalid input, please respond with either "y" or "n"')
-    keep_files = y_n.strip().lower() == 'y'
-
-    start_time = datetime.now()
-    emls_scanned, duplicates = remove_duplicates(directory_path, keep_files)
-    run_time = datetime.now() - start_time
-
-    word = "Moved" if keep_files else "Removed"
-    print(f"{word} {duplicates} duplicate .eml file{"s" if duplicates != 1 else ""}")
-    log_usage(start_time, run_time, emls_scanned, duplicates, y_n, directory_path)
 
 if __name__ == "__main__":
     main()
