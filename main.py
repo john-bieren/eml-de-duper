@@ -18,7 +18,7 @@ def main():
     directory_path = path.realpath(directory)
 
     while True:
-        y_n = input('Move duplicates to a "duplicates" subfolder instead of deleting them? (y/n) ')
+        y_n = input('Move duplicates to a "Duplicates" subfolder instead of deleting them? (y/n) ')
         if y_n.strip().lower() in ('y', 'n'):
             break
         print(f'"{y_n}" is an invalid input, please respond with either "y" or "n"')
@@ -35,7 +35,7 @@ def main():
 def remove_duplicates(directory_path, keep_files):
     '''Remove duplicate .eml files from directory'''
     if keep_files:
-        dup_dir_path = path.join(directory_path, "duplicates")
+        dup_dir_path = path.join(directory_path, "Duplicates")
         if not path.exists(dup_dir_path):
             mkdir(dup_dir_path)
 
