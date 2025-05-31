@@ -34,11 +34,13 @@ def main():
 
 def remove_duplicates(directory_path, keep_files):
     '''Remove duplicate .eml files from directory'''
+    # find/make path for duplicates directory, if applicable
     if keep_files:
         dup_dir_path = path.join(directory_path, "Duplicates")
         if not path.exists(dup_dir_path):
             mkdir(dup_dir_path)
 
+    # process file names, handle duplicates
     file_names = set()
     emls_scanned = duplicates = 0
     for file_name in tqdm(listdir(directory_path)):
@@ -55,6 +57,7 @@ def remove_duplicates(directory_path, keep_files):
             split_char = "_"
         potential_duplicate_part = file_name.split(split_char, maxsplit=1)[0]
 
+        # check whether the file is a duplicate, handle it accordingly
         if potential_duplicate_part in file_names:
             if keep_files:
                 move(path.join(directory_path, file_name), path.join(dup_dir_path, file_name))
@@ -73,7 +76,7 @@ def log_usage(start_time, run_time, emls, duplicates, dups_moved, dir_path):
             file.write(f'{start_time},{run_time},{emls},{duplicates},{dups_moved},"{dir_path}"\n')
     else:
         with open(file_name, "x", encoding='UTF-8') as file:
-            file.write("start time,run time,emls scanned,duplicates,duplicates moved,directory\n")
+            file.write("Start Time,Run Time,EMLs Scanned,Duplicates,Duplicates Moved,Directory\n")
             file.write(f'{start_time},{run_time},{emls},{duplicates},{dups_moved},"{dir_path}"\n')
 
 if __name__ == "__main__":

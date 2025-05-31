@@ -12,6 +12,8 @@ Clone the repository:
 ```
 git clone https://github.com/john-bieren/eml-de-duper.git
 ```
+**Note**: The tags in this repository do not correspond to releases, they simply indicate breaking changes.
+
 For ease of use, desktop shortcuts to `eml_de_duper.ps1` and `update.ps1` can be created. `eml_de_duper.ps1` allows the script to be run without using the terminal, and includes a pause statement so that the output can be read before closing the window. `update.ps1` automates the process of keeping the repository and its dependencies up to date. For these to work, make sure that the shortcuts start in the project directory.
 
 ## Usage
