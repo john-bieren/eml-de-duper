@@ -1,10 +1,12 @@
 # .eml De-Duper (dee-DOOP-er)
 
-A Python script that removes duplicate .eml files output by Barracuda Message Archiver.
+A Python script that moves potential duplicate .eml files output by Barracuda Message Archiver from a given folder into a separate subfolder.
 
 ## Methodology
 
-Files that are identified as duplicates can either be deleted or moved into a "Duplicates" subfolder. Duplicates are identified by comparing file names, which include the time when the email was sent, specified to the second. Files with the same time in their names are considered duplicates, and only one copy will be left in the original folder. This is not a perfect method, but it works correctly in the vast majority of cases, and opting to move duplicates instead of deleting them can mitigate the risk of false positives.
+Files that are identified as potential duplicates will be moved into a "Potential Duplicates" subfolder. Potential duplicates are identified by comparing file names, which include the time when the email was sent, specified to the second. Files with identical timestamps are marked as potential duplicates, and only one copy will be left in the original folder.
+
+**Be advised: it is possible that unique emails could have been sent at the same second, in which case this script would identify one as a potential duplicate. Make sure to verify whether potential duplicates are, in fact, duplicates.**
 
 ## Install
 
@@ -18,7 +20,6 @@ For ease of use, desktop shortcuts to `eml_de_duper.ps1` and `update.ps1` can be
 
 ## Usage
 
-To remove duplicate .eml files:
+To move potential duplicate .eml files:
 1. Run `main.py` or `eml_de_duper.ps1`.
-2. Input the full path to the folder which includes the .eml files from which you want to remove duplicates.
-3. Indicate whether you want duplicates to be deleted or moved into a "Duplicates" subfolder.
+2. Input the full path to the folder which includes the potential duplicate .eml files.
