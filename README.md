@@ -10,12 +10,10 @@ Files that are identified as potential duplicates will be moved into a "Potentia
 
 ## Install
 
-Clone the repository:
+Clone the repository and install dependencies:
 ```
 git clone https://github.com/john-bieren/eml-de-duper.git
-```
-Install dependencies:
-```
+cd eml-de-duper
 & ./update.ps1
 ```
 **Note**: The tags in this repository do not correspond to releases, they simply indicate breaking changes.
