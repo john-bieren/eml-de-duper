@@ -18,7 +18,7 @@ cd eml-de-duper
 ```
 **Note**: The tags in this repository do not correspond to releases, they simply indicate breaking changes.
 
-For ease of use, desktop shortcuts to `eml_de_duper.ps1` and `update.ps1` can be created. `eml_de_duper.ps1` allows the script to be run without using the terminal, and includes a pause statement so that the output can be read before closing the window. `update.ps1` automates the process of keeping the repository and its dependencies up to date. Make sure that the shortcuts start in the project directory.
+For ease of use, desktop shortcuts to `eml_de_duper.ps1` and `update.ps1` can be created. `eml_de_duper.ps1` allows the script to be run in a virtual environment without using the terminal, and includes a pause statement so that the output can be read before the window closes. `update.ps1` automates the process of setting up the virtual environment and keeping the repository and its dependencies up to date. Make sure that the shortcuts start in the project directory.
 
 ## Usage
 
