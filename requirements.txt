@@ -1,4 +1,2 @@
-# use update.ps1 instead of this if you can,
-# this exists to get depandabot alerts for minimum dependency versions
 colorama==0.4.6
 tqdm==4.67.1
