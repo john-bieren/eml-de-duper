@@ -74,15 +74,18 @@ def log_usage(
 ) -> None:
     """Logs info about the usage of the program."""
     file_name = "v2_usage_log.csv"
-    if os.path.isfile(file_name):
-        with open(file_name, "a", encoding="UTF-8") as file:
-            file.write(f'{start_time},{run_time},{emls},{duplicates},"{dir_path}"\n')
-    else:
-        with open(file_name, "x", encoding="UTF-8") as file:
-            file.write(
-                "Start Time,Run Time,EMLs Scanned,Potential Duplicates,Directory\n"
-            )
-            file.write(f'{start_time},{run_time},{emls},{duplicates},"{dir_path}"\n')
+    cols_line = "Start Time,Run Time,EMLs Scanned,Potential Duplicates,Directory\n"
+    log_line = f'{start_time},{run_time},{emls},{duplicates},"{dir_path}"\n'
+
+    try:
+        if os.path.isfile(file_name):
+            with open(file_name, "a", encoding="UTF-8") as file:
+                file.write(log_line)
+        else:
+            with open(file_name, "x", encoding="UTF-8") as file:
+                file.write(cols_line + log_line)
+    except PermissionError:
+        print(f"Usage not logged: {file_name} is open")
 
 
 if __name__ == "__main__":
