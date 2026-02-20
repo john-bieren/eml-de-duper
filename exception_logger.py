@@ -1,19 +1,20 @@
-#!/usr/bin/env python3
-
-"""Configure logging for uncaught exceptions"""
+"""Configures logging for uncaught exceptions."""
 
 import logging
 import sys
 
 
 class ExtraNewlineFormatter(logging.Formatter):
-    """Wrapper for logging.Formatter to add newlines after log entries"""
+    """Wraps logging.Formatter to add extra newline after log entries."""
+
     def format(self, record: logging.LogRecord) -> str:
+        """Adds extra newline after log entries."""
         original = super().format(record)
         return f"{original}\n"
 
+
 def configure_logger() -> None:
-    """Set up the root logger for logging uncaught exceptions"""
+    """Sets up the root logger for logging uncaught exceptions."""
     logger = logging.getLogger()
 
     # set up file handler
@@ -23,7 +24,7 @@ def configure_logger() -> None:
     logger.addHandler(file_handler)
 
     def handle_exception(exc_type, exc_value, exc_traceback):
-        """Function to wrap uncaught exceptions so they can be logged"""
+        """Wraps uncaught exceptions so they can be logged."""
         logger.error("", exc_info=(exc_type, exc_value, exc_traceback))
         sys.__excepthook__(exc_type, exc_value, exc_traceback)
 
