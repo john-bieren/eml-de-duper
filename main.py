@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Moves potential duplicate .eml files from a given directory into a subdirectory."""
+"""Moves potential duplicate EMLs from a given directory into a subdirectory."""
 
 import os
 import shutil
@@ -14,7 +14,7 @@ configure_logger()
 
 
 def main() -> None:
-    """Moves potential duplicate .eml files from a given directory into a subdirectory."""
+    """Moves potential duplicate EMLs from a given directory into a subdirectory."""
     directory = input(
         "Enter the full path to the folder which contains the EMLs: "
     ).strip('"')
@@ -25,12 +25,12 @@ def main() -> None:
     run_time = datetime.now() - start_time
 
     s = "s" if duplicates != 1 else ""
-    print(f"Moved {duplicates} potential duplicate .eml file{s}")
+    print(f"Moved {duplicates} potential duplicate EML{s}")
     log_usage(start_time, run_time, emls_scanned, duplicates, directory_path)
 
 
 def move_duplicates(directory_path: str) -> tuple[int, int]:
-    """Moves potential duplicate .eml files to a subdirectory."""
+    """Moves potential duplicate EMLs to a subdirectory."""
     # find/make path for potential duplicates directory
     dup_dir_path = os.path.join(directory_path, "Potential Duplicates")
     if not os.path.exists(dup_dir_path):

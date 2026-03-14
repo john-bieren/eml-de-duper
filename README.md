@@ -1,10 +1,10 @@
-# .eml De-Duper (dee-DOOP-er)
+# EML De-Duper (dee-DOOP-er)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
-A Python script that moves potential duplicate .eml files output by Barracuda Message Archiver from
-a given folder into a separate subfolder.
+A Python script that moves potential duplicate .eml files (EMLs) output by Barracuda Message
+Archiver from a given folder into a separate subfolder.
 
 ## Methodology
 
@@ -38,7 +38,7 @@ dependencies up to date. Make sure that the shortcuts start in the project direc
 
 ## Usage
 
-To move potential duplicate .eml files:
+To move potential duplicate EMLs:
 
 1. Run `main.py` or `eml_de_duper.ps1`.
-2. Input the full path to the folder which includes the potential duplicate .eml files.
+2. Input the full path to the folder which includes the potential duplicate EMLs.
