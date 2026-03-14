@@ -13,11 +13,17 @@ subfolder. Potential duplicates are identified by comparing file names, which in
 the email was sent, specified to the second. Files with identical timestamps are marked as potential
 duplicates, and only one copy will be left in the original folder.
 
-**Be advised: it is possible that unique emails could have been sent at the same second, in which
-case this script would identify one as a potential duplicate. Make sure to verify whether potential
-duplicates are, in fact, duplicates.**
+> [!WARNING]
+> It is possible that unique emails could have been sent at the same second, in which case this
+script would identify one as a potential duplicate. Make sure to verify whether potential duplicates
+are, in fact, duplicates.
 
 ## Install
+
+> [!IMPORTANT]
+> `eml_de_duper.ps1` and `update.ps1` will not work on operating systems other than Windows. If you
+use a different operating system, all Python code will still work as intended, but you'll need to
+manage dependencies and updates yourself.
 
 Clone the repository and install dependencies:
 
@@ -27,14 +33,17 @@ cd eml-de-duper
 & ./update.ps1
 ```
 
-**Note**: The tags in this repository do not correspond to releases, they simply indicate breaking
-changes.
+If you wish to install development dependencies, you can use `requirements-dev.txt`.
 
 For ease of use, desktop shortcuts to `eml_de_duper.ps1` and `update.ps1` can be created.
 `eml_de_duper.ps1` allows the script to be run in a virtual environment without using the terminal,
 and includes a pause statement so that the output can be read before the window closes. `update.ps1`
 automates the process of setting up the virtual environment and keeping the repository and its
 dependencies up to date. Make sure that the shortcuts start in the project directory.
+
+> [!NOTE]
+> The tags in this repository do not correspond to releases, instead they indicate the conclusion of
+a series of breaking changes.
 
 ## Usage
 
